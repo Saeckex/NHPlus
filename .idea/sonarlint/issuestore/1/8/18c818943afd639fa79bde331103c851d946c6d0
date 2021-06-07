@@ -1,0 +1,8 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ßê§ÿÿÿÿÿ
+7
+java:S3010"!Remove this assignment of "conn".(ÄÖïÅ
+C
+java:S4925"-Remove this "Class.forName()", it is useless.(ïÓÓ‡
+N	java:S106"9Replace this use of System.out or System.err by a logger.(˜Äè¯
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ø­¿¯üÿÿÿÿ

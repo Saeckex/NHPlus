@@ -1,0 +1,15 @@
+
+]
+java:S2095O"GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
+]
+java:S2095Z"GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
+o
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
+F
+java:S1481N"+Remove this unused "object" local variable.(ÒÓó©üÿÿÿÿ
+o
+java:S22932"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
+N
+java:S1854M"8Remove this useless assignment to local variable "list".(Øô‹£
+o
+java:S1488&"YImmediately return this expression instead of assigning it to the temporary variable "m".(Ú”İ¶
