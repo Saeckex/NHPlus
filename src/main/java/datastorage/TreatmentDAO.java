@@ -42,6 +42,7 @@ public class TreatmentDAO extends DAOimp<Treatment> {
 
     @Override
     protected String getReadAllStatementString() {
+
         return "SELECT * FROM treatment";
     }
 

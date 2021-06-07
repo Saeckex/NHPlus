@@ -1,0 +1,6 @@
+
+k	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆÁÜúÿÿÿÿ
+V
+java:S18545";Remove this useless assignment to local variable "s_begin".(ÆÁÜúÿÿÿÿ
+G
+java:S14815",Remove this unused "s_begin" local variable.(ÆÁÜúÿÿÿÿ
