@@ -34,8 +34,6 @@ public class AllPatientController {
     private TableColumn<Patient, String> colCareLevel;
     @FXML
     private TableColumn<Patient, String> colRoom;
-    @FXML
-    private TableColumn<Patient, String> colAssets;
 
     @FXML
     Button btnDelete;
@@ -51,8 +49,6 @@ public class AllPatientController {
     TextField txtCarelevel;
     @FXML
     TextField txtRoom;
-    @FXML
-    private TextField txtAssets;
 
     private ObservableList<Patient> tableviewContent = FXCollections.observableArrayList();
     private PatientDAO dao;
@@ -138,7 +134,10 @@ public class AllPatientController {
         doUpdate(event);
     }
 
+    @FXML
+    public void change(){
 
+    }
 
     /**
      * updates a patient by calling the update-Method in the {@link PatientDAO}

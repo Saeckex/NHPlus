@@ -1,15 +1,15 @@
 
-L
-java:S1854"8Remove this useless assignment to local variable "list".(Øô‹£
-D
-java:S1481"+Remove this unused "object" local variable.(ÒÓó©üÿÿÿÿ
-[
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
-m
-java:S1488"YImmediately return this expression instead of assigning it to the temporary variable "m".(Ú”İ¶
-m
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
-m
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
-[
-java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
+o
+java:S2293N"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
+F
+java:S1481O"+Remove this unused "object" local variable.(ÒÓó©üÿÿÿÿ
+o
+java:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(Øô‹£
+o
+java:S1488&"YImmediately return this expression instead of assigning it to the temporary variable "m".(Ú”İ¶
+]
+java:S2095["GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
+]
+java:S2095P"GUse try-with-resources or close this "Statement" in a "finally" clause.(˜ğ×
+N
+java:S1854N"8Remove this useless assignment to local variable "list".(Øô‹£

@@ -25,3 +25,10 @@ R
 "src/main/java/controller/Main.java,6/5/650fa1777788e3539b02217f72bbbc04443393f5
 >
 Pflegeheim.iml,1/6/165264ea36ed97664a0a654835072539129ea197
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+R
+"src/main/java/model/Caregiver.java,0/c/0ca46e5e4970f357e62a00804ef1b43aaf794979
+[
++src/main/java/datastorage/CaregiverDAO.java,9/2/92500688c6aed64bde1b36196717827e0a0008f4
