@@ -1,5 +1,6 @@
 package controller;
 
+import datastorage.LockedPatientDAO;
 import datastorage.PatientDAO;
 import datastorage.TreatmentDAO;
 import javafx.collections.FXCollections;
@@ -8,9 +9,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import model.LockedPatient;
 import model.Patient;
 import utils.DateConverter;
 import datastorage.DAOFactory;
+import utils.DeleteHandler;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -36,7 +40,7 @@ public class AllPatientController {
     private TableColumn<Patient, String> colRoom;
 
     @FXML
-    Button btnDelete;
+    Button btnLockPatient;
     @FXML
     Button btnAdd;
     @FXML
@@ -157,6 +161,7 @@ public class AllPatientController {
     private void readAllAndShowInTableView() {
         this.tableviewContent.clear();
         this.dao = DAOFactory.getDAOFactory().createPatientDAO();
+        //DeleteHandler.deleteTenYearsLockedPatient();
         List<Patient> allPatients;
         try {
             allPatients = dao.readAll();
@@ -204,6 +209,33 @@ public class AllPatientController {
         }
         readAllAndShowInTableView();
         clearTextfields();
+    }
+
+    /**
+     * nimmt bestehende Patientendatensätze und verschiebt sie in andere Tabelle
+     */
+
+    @FXML
+    public void handleLockPatient() {
+
+
+        try{
+            LockedPatientDAO lpdao=DAOFactory.getDAOFactory().createLockedPatientDAO();
+            Patient p = this.tableView.getSelectionModel().getSelectedItem();
+            LocalDate ld = DateConverter.convertStringToLocalDate(p.getDateOfBirth());
+            LockedPatient p1= new LockedPatient(p.getFirstName(),p.getSurname(),ld,p.getCareLevel(),p.getRoomnumber());
+            lpdao.create(p1);
+
+            TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();
+
+            tDao.deleteByPid(p.getPid());
+            dao.deleteById(p.getPid());
+            this.tableView.getItems().remove(p);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
