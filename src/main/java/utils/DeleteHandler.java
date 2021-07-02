@@ -1,5 +1,9 @@
 package utils;
 
+/**
+ * Klasse enthält Methoden zum prüfen und löschen der Datensätze einzelner lockedPatients
+ */
+
 import datastorage.DAOFactory;
 import datastorage.RemovedPatientDAO;
 import model.Patient;
@@ -9,6 +13,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public final class DeleteHandler {
+    /**
+     * Klasse ist als Singleton definiert um erstellen weiterer Objekte zu unterbinden
+     */
     private static DeleteHandler deleteHandler;
 
   private DeleteHandler(){}
