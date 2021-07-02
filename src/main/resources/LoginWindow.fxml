@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginWindowController">
+   <children>
+      <BorderPane id="vBox" prefHeight="75.0" prefWidth="300.0" styleClass="vBox" stylesheets="@Application.css">
+         <top>
+            <Label prefWidth="105.0" text="Einloggen" textFill="WHITE" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="20.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </top>
+      </BorderPane>
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="100.0" />
+         </padding>
+         <children>
+            <Label text="Benutzer:">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label prefHeight="16.0" prefWidth="75.0" text="Passwort:" GridPane.rowIndex="1">
+               <font>
+                   <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <TextField fx:id="txtuser" prefHeight="26.0" prefWidth="141.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleLogin" prefHeight="26.0" prefWidth="110.0" text="Einloggen" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

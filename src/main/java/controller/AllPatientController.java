@@ -1,6 +1,5 @@
 package controller;
 
-import datastorage.LockedPatientDAO;
 import datastorage.PatientDAO;
 import datastorage.TreatmentDAO;
 import javafx.collections.FXCollections;
@@ -9,11 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import model.LockedPatient;
+import model.RemovedPatient;
 import model.Patient;
 import utils.DateConverter;
 import datastorage.DAOFactory;
-import utils.DeleteHandler;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -223,7 +221,7 @@ public class AllPatientController {
             LockedPatientDAO lpdao=DAOFactory.getDAOFactory().createLockedPatientDAO();
             Patient p = this.tableView.getSelectionModel().getSelectedItem();
             LocalDate ld = DateConverter.convertStringToLocalDate(p.getDateOfBirth());
-            LockedPatient p1= new LockedPatient(p.getFirstName(),p.getSurname(),ld,p.getCareLevel(),p.getRoomnumber());
+            RemovedPatient p1= new RemovedPatient(p.getFirstName(),p.getSurname(),ld,p.getCareLevel(),p.getRoomnumber());
             lpdao.create(p1);
 
             TreatmentDAO tDao = DAOFactory.getDAOFactory().createTreatmentDAO();

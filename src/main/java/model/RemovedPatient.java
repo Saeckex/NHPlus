@@ -2,14 +2,13 @@ package model;
 
 
 import java.time.LocalDate;
-import java.util.Date;
 
 
-public class LockedPatient extends Patient  {
+public class RemovedPatient extends Patient  {
 
     private LocalDate toDeleteDate;
 
-    public LockedPatient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber) {
+    public RemovedPatient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber) {
         super(firstName, surname, dateOfBirth, careLevel, roomnumber);
         LocalDate date=LocalDate.now();
 
@@ -18,7 +17,7 @@ public class LockedPatient extends Patient  {
 
     }
 
-    public LockedPatient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber,LocalDate deleteDate) {
+    public RemovedPatient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, LocalDate deleteDate) {
         super(firstName, surname, dateOfBirth, careLevel, roomnumber);
         this.toDeleteDate=deleteDate;
 

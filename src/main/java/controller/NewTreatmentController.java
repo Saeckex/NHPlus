@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewTreatmentController {
     @FXML
@@ -90,7 +89,6 @@ public class NewTreatmentController {
     public void handleAdd(){
         try {
             LocalDate date = this.datepicker.getValue();
-            String s_begin = txtBegin.getText();
             LocalTime begin = DateConverter.convertStringToLocalTime(txtBegin.getText());
             LocalTime end = DateConverter.convertStringToLocalTime(txtEnd.getText());
             String description = txtDescription.getText();
