@@ -1,6 +1,7 @@
 package controller;
 
 import datastorage.PatientDAO;
+import datastorage.RemovedPatientDAO;
 import datastorage.TreatmentDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import model.RemovedPatient;
 import model.Patient;
 import utils.DateConverter;
 import datastorage.DAOFactory;
+import utils.DeleteHandler;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -159,12 +161,18 @@ public class AllPatientController {
     private void readAllAndShowInTableView() {
         this.tableviewContent.clear();
         this.dao = DAOFactory.getDAOFactory().createPatientDAO();
-        //DeleteHandler.deleteTenYearsLockedPatient();
+        RemovedPatientDAO removedpatientdao=DAOFactory.getDAOFactory().createRemovedPatientDAO();
+        DeleteHandler deletehandler=DeleteHandler.getDeleteHandler();
         List<Patient> allPatients;
+        List<RemovedPatient> allRemovedPatients;
         try {
             allPatients = dao.readAll();
+            allRemovedPatients = removedpatientdao.readAll();
             for (Patient p : allPatients) {
                 this.tableviewContent.add(p);
+            }
+            for(RemovedPatient p :allRemovedPatients){
+                deletehandler.deleteTenYearsLockedPatient(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -210,7 +218,8 @@ public class AllPatientController {
     }
 
     /**
-     * nimmt bestehende Patientendatensätze und verschiebt sie in andere Tabelle
+     * nimmt bestehende Patientendatensätze,schreibt diese in die Tabelle LockedPatiens
+     * und löscht das Original aus der Tabelle Patient
      */
 
     @FXML
@@ -218,7 +227,7 @@ public class AllPatientController {
 
 
         try{
-            LockedPatientDAO lpdao=DAOFactory.getDAOFactory().createLockedPatientDAO();
+            RemovedPatientDAO lpdao=DAOFactory.getDAOFactory().createRemovedPatientDAO();
             Patient p = this.tableView.getSelectionModel().getSelectedItem();
             LocalDate ld = DateConverter.convertStringToLocalDate(p.getDateOfBirth());
             RemovedPatient p1= new RemovedPatient(p.getFirstName(),p.getSurname(),ld,p.getCareLevel(),p.getRoomnumber());

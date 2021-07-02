@@ -1,25 +1,36 @@
 package utils;
 
+import datastorage.DAOFactory;
+import datastorage.RemovedPatientDAO;
+import model.Patient;
 import model.RemovedPatient;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class DeleteHandler {
+public final class DeleteHandler {
+    private static DeleteHandler deleteHandler;
 
-    public LocalDate checkForCertainTime(){
-        return LocalDate.now();
+  private DeleteHandler(){}
+
+    public boolean checkForCertainTime(RemovedPatient removedpatient){
+       LocalDate date= removedpatient.getToDeleteDate();
+       LocalDate todate = LocalDate.now();
+       date.plusYears(10);
+       return date.isAfter(todate);
     }
-    public void deleteTenYearsLockedPatient(RemovedPatient patient){
+    public void deleteTenYearsLockedPatient(RemovedPatient patient) throws SQLException {
+      if(checkForCertainTime(patient)){
+          RemovedPatientDAO removedpatient = DAOFactory.getDAOFactory().createRemovedPatientDAO();
+          removedpatient.deleteById(patient.getPid());
+      }
+    }
 
-        if (checkForCertainTime().isAfter(patient.getToDeleteDate().plusYears(10))){
-
-
-
-        }
-        else{
-
-        }
-
+    public synchronized static DeleteHandler getDeleteHandler(){
+        if(deleteHandler==null){ deleteHandler= new DeleteHandler();}
+        return deleteHandler;
 
     }
+
+
 }

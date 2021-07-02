@@ -18,14 +18,14 @@ public class RemovedPatientDAO extends DAOimp<RemovedPatient>{
 
     @Override
     protected String getCreateStatementString(RemovedPatient removedPatient) {
-        return String.format("INSERT INTO lockedpatients (firstname, surname, dateOfBirth, carelevel, roomnumber, todeletedate) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" +
-                "WHERE p_id = '%s'", removedPatient.getFirstName(), removedPatient.getSurname(), removedPatient.getCareLevel(),
+        return String.format("INSERT INTO lockedpatiens (firstname, surname, dateOfBirth, carelevel, roomnumber, todeletedate) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" +
+                "WHERE p_id = '%s'", removedPatient.getFirstName(), removedPatient.getSurname(),removedPatient.getDateOfBirth(), removedPatient.getCareLevel(),
                 removedPatient.getRoomnumber(), removedPatient.getToDeleteDate(), removedPatient.getPid());
     }
 
     @Override
     protected String getReadByIDStatementString(long key) {
-        return String.format("SELECT * FROM lockedpatients WHERE pid = %d", key);
+        return String.format("SELECT * FROM lockedpatiens WHERE p_id = %d", key);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class RemovedPatientDAO extends DAOimp<RemovedPatient>{
 
     @Override
     protected String getReadAllStatementString() {
-        return "SELECT * FROM lockedpatients";
+        return "SELECT * FROM lockedpatiens";
     }
 
     @Override
@@ -59,13 +59,13 @@ public class RemovedPatientDAO extends DAOimp<RemovedPatient>{
 
     @Override
     protected String getUpdateStatementString(RemovedPatient removedPatient) {
-        return String.format("UPDATE  SET firstname = '%s', surname = '%s', dateOfBirth = '%s', carelevel = '%s', " +
-                        "roomnumber = '%s', todeletedate = '%s'", removedPatient.getFirstName(), removedPatient.getSurname(),
-                removedPatient.getDateOfBirth(),removedPatient.getCareLevel(), removedPatient.getRoomnumber(), removedPatient.getToDeleteDate());
+        return String.format("UPDATE lockedpatiens SET firstname = '%s', surname = '%s', dateOfBirth = '%s', carelevel = '%s', " +
+                        "roomnumber = '%s', todeletedate = '%s' WHERE p_id = '%s'", removedPatient.getFirstName(), removedPatient.getSurname(),
+                removedPatient.getDateOfBirth(),removedPatient.getCareLevel(), removedPatient.getRoomnumber(), removedPatient.getToDeleteDate(),removedPatient.getPid());
     }
 
     @Override
     protected String getDeleteStatementString(long key) {
-        return String.format("Delete FROM lockedpatients WHERE p_id=%d", key);
+        return String.format("Delete FROM lockedpatiens WHERE p_id=%d", key);
     }
 }

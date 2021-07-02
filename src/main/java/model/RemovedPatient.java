@@ -13,8 +13,6 @@ public class RemovedPatient extends Patient  {
         LocalDate date=LocalDate.now();
 
 
-        toDeleteDate.plusYears(10);
-
     }
 
     public RemovedPatient(String firstName, String surname, LocalDate dateOfBirth, String careLevel, String roomnumber, LocalDate deleteDate) {
