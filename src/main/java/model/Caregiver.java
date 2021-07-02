@@ -49,7 +49,7 @@ public class Caregiver extends Person {
     }
     /**
      * Setter um Aktivitätsstatus auf den anderen boolean Wert zu setzen.
-     * @param activity als Boolean
+     * activity als Boolean
      */
     public void setActivity(){ this.activity = !this.activity; }
 

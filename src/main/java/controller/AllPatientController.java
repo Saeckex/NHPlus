@@ -239,6 +239,7 @@ public class AllPatientController {
             dao.deleteById(p.getPid());
             this.tableView.getItems().remove(p);
 
+
         }
         catch(Exception e){
             e.printStackTrace();
