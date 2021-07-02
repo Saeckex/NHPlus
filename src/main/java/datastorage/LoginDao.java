@@ -83,8 +83,8 @@ public class LoginDao extends DAOimp<User>{
     @Override
     protected String getUpdateStatementString(User user) {
 
-        return String.format("UPDATE login SET User = '%s', passwordhash = '%s', salt = '%s' WHERE lid = '%s' ",
-                user.getUser(), user.getPasswordHash(), user.getSalt(), user.getUserID());
+        return String.format("UPDATE login SET user = '%s', passwordhash = '%s', salt = '%s' WHERE lid = '%s' ",
+                user.getUser(), user.getPasswordHash(), user.getUserID());
     }
     /**
      * bekommt eine ID und gibt einen SQL Command String zurück der den dazugehörigen Datensatz endgültig löscht

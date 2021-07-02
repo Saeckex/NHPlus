@@ -55,10 +55,9 @@ public class LoginWindowController {
         List<User> allUser = dao.readAll();
         for(User u : allUser){
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            String str = password + u.getSalt();
-            byte[] hash = digest.digest(str.getBytes(StandardCharsets.UTF_8));
-            str = new String(hash, StandardCharsets.UTF_8);
-            if (u.getPasswordHash().equals(str)){
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            password = new String(hash, StandardCharsets.UTF_8);
+            if (u.getPasswordHash().equals(password)){
                 this.user = u;
                 return true;
             }

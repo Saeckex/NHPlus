@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import model.Treatment;
 import model.User;
 
 import java.io.IOException;
@@ -22,7 +21,23 @@ public class MainWindowController {
     @FXML
     private void handleShowLogin(ActionEvent e) {
         if (!checkLogin()) {
-            loginWindow();
+            try {
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("/LoginWindow.fxml"));
+                AnchorPane pane = loader.load();
+                Scene scene = new Scene(pane);
+
+                Stage stage = new Stage();
+                LoginWindowController controller = loader.getController();
+
+                controller.initializeController(stage, this);
+
+                stage.setScene(scene);
+                stage.setResizable(false);
+                stage.showAndWait();
+            } catch (IOException ex) {
+                // TODO Auto-generated catch block
+                ex.printStackTrace();
+            }
             return;
         }
         throwAllertAlreadyLoggedIn();
@@ -30,17 +45,17 @@ public class MainWindowController {
     }
 
     @FXML
-    private void handleShowNewUser(ActionEvent e){
+    private void handleShowUserList(ActionEvent e){
         if (checkLogin()) {
             try {
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("/CreateUserView"));
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("/AllUserView.fxml"));
                 AnchorPane pane = loader.load();
                 Scene scene = new Scene(pane);
 
                 Stage stage = new Stage();
-                AddUserController controller = loader.getController();
+                AllUserController controller = loader.getController();
 
-             //   controller.initializeController(stage);
+                controller.initilizeController(stage,this);
 
                 stage.setScene(scene);
                 stage.setResizable(false);
@@ -48,6 +63,7 @@ public class MainWindowController {
             } catch (IOException exception) {
                 exception.printStackTrace();
             }
+            return;
         }
         throwAllertNotLoggedIn();
         return;
@@ -111,26 +127,6 @@ public class MainWindowController {
             return true;
         }
         return false;
-    }
-
-    public void loginWindow(){
-        try {
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/LoginWindow.fxml"));
-            AnchorPane pane = loader.load();
-            Scene scene = new Scene(pane);
-
-            Stage stage = new Stage();
-            LoginWindowController controller = loader.getController();
-
-            controller.initializeController(stage, this);
-
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.showAndWait();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     protected void setLoggedInUser(User user){

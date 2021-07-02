@@ -59,7 +59,6 @@ public class AllCareGiverController {
         this.colTelephone.setCellFactory(TextFieldTableCell.forTableColumn());
 
         this.colActivity.setCellValueFactory(new PropertyValueFactory<Caregiver, String>("activityAsString"));
-        this.colActivity.setCellFactory(TextFieldTableCell.forTableColumn());
 
         this.tableView.setItems(this.tableviewContent);
     }
@@ -96,7 +95,7 @@ public class AllCareGiverController {
         List<Caregiver> allCaregivers;
         try {
             allCaregivers = dao.readAll();
-            for (Caregiver c : allCaregivers) { Caregiver selectedItem = this.tableView.getSelectionModel().getSelectedItem();
+            for (Caregiver c : allCaregivers) {
                 this.tableviewContent.add(c);
             }
         } catch (SQLException e) {

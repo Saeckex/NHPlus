@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AllUserController">
+   <children>
+      <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefWidth="200.0" spacing="25.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+             <Label alignment="CENTER" contentDisplay="CENTER" minWidth="400.0" text="Benutzer" textAlignment="CENTER">
+                 <font>
+                     <Font size="36.0" />
+                 </font>
+             </Label>
+         </children></HBox>
+      <HBox layoutX="420.0" layoutY="450.0" spacing="10.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <children>
+             <TextField fx:id="txtUserName" prefHeight="26.0" prefWidth="220.0" promptText="Benutzername" />
+             <TextField fx:id="txfPasswordOne" prefHeight="26.0" prefWidth="220.0" promptText="Passwort" />
+             <TextField fx:id="txfPasswordTwo" prefHeight="26.0" prefWidth="220.0" promptText="Pw Wiederholung" />
+             <Button mnemonicParsing="false" onAction="#handleAdd" prefWidth="90.0" text="Hinzufügen" />
+             <Button mnemonicParsing="false" onAction="#handleDeleteRow" prefWidth="90.0" text="Löschen" />
+         </children></HBox>
+      <TableView fx:id="tableView" editable="true" layoutX="31.0" layoutY="150.0" prefHeight="310.0" prefWidth="825.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="140.0">
+        <columns>
+          <TableColumn fx:id="colID" maxWidth="1200.0" minWidth="5.0" prefWidth="50.0" text="ID" />
+          <TableColumn fx:id="colUsername" maxWidth="7500.0" minWidth="20.0" onEditCommit="#handleOnEditUsername" prefWidth="200.0" text="Benutzername" />
+            <TableColumn fx:id="colPasswordHash" maxWidth="7500.0" minWidth="20.0" prefWidth="575.0" text="Passworthash" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
